@@ -16,14 +16,14 @@ public class HlavniProgram {
         Sportka druhyTah = new Sportka();
 
         System.out.println("Probíhá losování prvního tahu Sportky…");
-        prvniTah.zamichej();
+        prvniTah.shufflePools();
         overVysledky(prvniTah);
         vypisVysledky(prvniTah);
 
         System.out.println();
 
         System.out.println("Probíhá losování druhého tahu Sportky…");
-        druhyTah.zamichej();
+        druhyTah.shufflePools();
         overVysledky(druhyTah);
         vypisVysledky(druhyTah);
 
@@ -33,18 +33,18 @@ public class HlavniProgram {
     }
 
     private static void vypisVysledky(Sportka sportka) {
-        System.out.printf("Vylosovaná čísla: %s.", sportka.dejVylosovanaCisla()
+        System.out.printf("Vylosovaná čísla: %s.", sportka.getWinningNumber()
                         .stream()
                         .map(cislo -> Integer.toString(cislo))
                         .collect(Collectors.joining(", ")))
                 .println();
-        System.out.printf("Dodatkové číslo: %d.", sportka.dejDodatkoveCislo())
+        System.out.printf("Dodatkové číslo: %d.", sportka.getAdditionalNumber())
                 .println();
     }
 
     private static void overVysledky(Sportka sportka) {
-        List<Integer> vylosovanaCisla = Objects.requireNonNull(sportka.dejVylosovanaCisla(), "Chybí vylosovaná čísla.");
-        Integer dodatkoveCislo = Objects.requireNonNull(sportka.dejDodatkoveCislo(), "Chybí dodatkové číslo.");
+        List<Integer> vylosovanaCisla = Objects.requireNonNull(sportka.getWinningNumber(), "Chybí vylosovaná čísla.");
+        Integer dodatkoveCislo = Objects.requireNonNull(sportka.getAdditionalNumber(), "Chybí dodatkové číslo.");
 
         if (vylosovanaCisla.size() != 6) {
             throw new IllegalArgumentException(String.format("Vylosovaných čísel musí být 6, ve skutečnosti jich je %d.", vylosovanaCisla.size()));

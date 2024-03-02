@@ -8,10 +8,12 @@ import java.util.List;
  * Třída pro losování Sportky.
  */
 public class Sportka {
-    private final List<Integer> osudi = new ArrayList<>();
+    private final List<Integer> pools = new ArrayList<>();
 
     public Sportka() {
-        //TODO naplnit osudí čísly 1 až 49.
+        for (int i = 1; i <= 49; i++) {
+            pools.add(i);
+        }
     }
 
     /**
@@ -19,8 +21,8 @@ public class Sportka {
      *
      * @see Collections#shuffle(List)
      */
-    public void zamichej() {
-        //TODO zamíchat osudí
+    public void shufflePools() {
+        Collections.shuffle(pools);
     }
 
     /**
@@ -29,9 +31,8 @@ public class Sportka {
      * @return Seznam vylosovaných čísel.
      * @see List#subList(int, int)
      */
-    public List<Integer> dejVylosovanaCisla() {
-        //TODO Vrátit seznam prvních 6 čísel z osudí.
-        return null;
+    public List<Integer> getWinningNumber() {
+        return new ArrayList<>(pools.subList(0, 6));
     }
 
     /**
@@ -39,8 +40,7 @@ public class Sportka {
      *
      * @return Dodatkové číslo.
      */
-    public Integer dejDodatkoveCislo() {
-        //TODO Vrátit sedmé číslo z osudí.
-        return null;
+    public Integer getAdditionalNumber() {
+        return pools.get(6);
     }
 }
