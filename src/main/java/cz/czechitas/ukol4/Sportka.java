@@ -8,9 +8,10 @@ import java.util.List;
  * Třída pro losování Sportky.
  */
 public class Sportka {
-    private final List<Integer> pools = new ArrayList<>();
+    private final List<Integer> pools;
 
     public Sportka() {
+        pools = new ArrayList<>();
         for (int i = 1; i <= 49; i++) {
             pools.add(i);
         }
@@ -32,7 +33,7 @@ public class Sportka {
      * @see List#subList(int, int)
      */
     public List<Integer> getWinningNumber() {
-        return new ArrayList<>(pools.subList(0, 6));
+        return pools.subList(0, 6);
     }
 
     /**
